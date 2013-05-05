@@ -4,7 +4,10 @@
  */
 
 require([
-	// Require the application
-], function () {
+	'jquery',
+	'loader'
+], function ($, L) {
 	'use strict';
+
+	L.load('index');
 });
