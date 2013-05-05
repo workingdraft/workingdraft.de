@@ -3,17 +3,28 @@
 
 	define(function () {
 		var _$main = $('.main');
+		var pathPrefix = 'content/';
+		var fileSuffix = '.html';
+
+		var _load = function (what) {
+
+			// Delete all content from main element
+			_$main.empty();
+
+			$
+				.get(pathPrefix + what + fileSuffix, function (data) {
+					_$main.append(data);
+				}, 'html')
+
+				.fail(function () {
+					if (what !== '404') {
+						_load('404');
+					}
+				});
+		};
 
 		return {
-			load: function (what) {
-
-				// Delete all content from main element
-				_$main.empty();
-
-				$.get('content/' + what + '.html', function (data) {
-					_$main.append(data);
-				});
-			}
+			load: _load
 		};
 	});
 }());
