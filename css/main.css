@@ -5,7 +5,18 @@
  *	@version	v0.0.0
  *
  */
-/* normalize.css v1.1.0 | MIT License | git.io/normalize */
+/**
+ * Our color palette
+ */
+/**
+ * @include x-multiple-backgrounds(
+ *	rgba(0, 0, 0, 0.3),
+ *	url('img/someImage-1.png'),
+ *	url('../img/someImage-2.png') no-repeat,
+ *	(linear-gradient, to bottom, #aaa, #ddd)
+ * );
+ */
+/* normalize.css v1.1.1 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
    ========================================================================== */
@@ -59,18 +70,26 @@ audio:not([controls]) {
    Base
    ========================================================================== */
 /**
- * 1. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
+ * 1. Prevent system color scheme's background color being used in Firefox, IE,
+ *    and Opera.
+ * 2. Prevent system color scheme's text color being used in Firefox, IE, and
+ *    Opera.
+ * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
  *    `em` units.
- * 2. Prevent iOS text size adjust after orientation change, without disabling
+ * 4. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
 html {
-  font-size: 100%;
+  background: #fff;
   /* 1 */
-  -webkit-text-size-adjust: 100%;
+  color: #000;
   /* 2 */
+  font-size: 100%;
+  /* 3 */
   -ms-text-size-adjust: 100%;
-  /* 2 */
+  /* 4 */
+  -webkit-text-size-adjust: 100%;
+  /* 4 */
 }
 
 /**
@@ -614,7 +633,7 @@ button,
 input,
 select,
 textarea {
-  color: #222;
+  color: #211421;
 }
 
 body {
@@ -680,6 +699,187 @@ textarea {
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
+}
+
+/**
+ * Links
+ */
+a {
+  color: #8f098f;
+}
+a:visited {
+  color: #8f098f;
+}
+
+/**
+ * Content Area
+ */
+.main {
+  position: relative;
+}
+
+.error-page {
+  padding: 0 32px;
+  padding: 0 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/**
+ * Page Header and Navigation
+ */
+.site-header {
+  padding: 32px 0;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.site-logo {
+  margin: 0;
+}
+.site-logo > a {
+  display: inline-block;
+  text-decoration: none;
+}
+.site-logo > a:before {
+  width: 240px;
+  width: 15rem;
+  height: 240px;
+  height: 15rem;
+  content: '';
+  display: block;
+  margin: 0 auto;
+  background: url(../img/logo.svg) no-repeat 0 0;
+  background-size: contain;
+}
+
+.site-navigation {
+  font-size: 20px;
+  font-size: 1.25rem;
+  background: #e8d9e8;
+}
+.site-navigation > ul {
+  margin: 32px auto 0;
+  margin: 2rem auto 0;
+  max-width: 960px;
+  padding: 0;
+}
+.site-navigation > ul > li {
+  display: inline;
+}
+.site-navigation a {
+  padding: 12px 16px;
+  padding: 0.75rem 1rem;
+  display: inline-block;
+  text-decoration: none;
+}
+.site-navigation a:hover {
+  color: #fff;
+  background: #2f032f;
+}
+
+/**
+ * The Site's footer
+ */
+.site-footer {
+  margin-top: 48px;
+  margin-top: 3rem;
+  padding: 32px 0 0;
+  padding: 2rem 0 0;
+  font-size: 14px;
+  font-size: 0.875rem;
+  background: #211421;
+  color: #fff;
+  text-align: center;
+}
+.site-footer a {
+  color: #e8d9e8;
+}
+.site-footer a:visited {
+  color: #e8d9e8;
+}
+
+.authors {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.authors > li {
+  display: inline-block;
+  vertical-align: top;
+}
+.authors a {
+  width: 96px;
+  width: 6rem;
+  padding: 8px;
+  padding: 0.5rem;
+  display: inline-block;
+  text-decoration: none;
+}
+.authors img {
+  width: 64px;
+  width: 4rem;
+  height: 64px;
+  height: 4rem;
+  margin: 0 auto 16px;
+  margin: 0 auto 1rem;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  display: block;
+}
+
+.authors-other {
+  font-size: 12px;
+  font-size: 0.75rem;
+}
+
+.follow-us {
+  margin: 48px 0;
+  margin: 3rem 0;
+}
+
+.footer-navigation {
+  padding: 16px 32px 32px;
+  padding: 1rem 2rem 2rem;
+  background: #110a11;
+}
+.footer-navigation > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-navigation > ul > li {
+  display: inline;
+}
+.footer-navigation > ul > li > a {
+  margin: 0 16px;
+  margin: 0 1rem;
+}
+
+/**
+ * The Soundwaves
+ */
+.soundwave {
+  padding: 0 32px 32px;
+  padding: 0 2rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.soundwave img {
+  min-height: 96px;
+  min-height: 6rem;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+ * Revisions
+ */
+.revision {
+  padding: 0 32px;
+  padding: 0 2rem;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 @media print {

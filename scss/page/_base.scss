@@ -15,7 +15,7 @@ button,
 input,
 select,
 textarea {
-	color: #222;
+	color: $highlight-dark;
 }
 
 body {
@@ -87,4 +87,36 @@ textarea {
 	background: #ccc;
 	color: #000;
 	padding: 0.2em 0;
+}
+
+
+
+/**
+ * Links
+ */
+a {
+	color: $highlight;
+
+	&:visited {
+		color: $highlight;
+	}
+}
+
+
+
+
+/**
+ * Content Area
+ */
+
+.main {
+	position: relative;
+}
+
+
+.error-page {
+	@include x-rem(padding, 0 2);
+
+	max-width: 700px;
+	margin: 0 auto;
 }

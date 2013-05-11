@@ -1,0 +1,60 @@
+/**
+ * Page Header and Navigation
+ */
+
+.site-header {
+	@include x-rem(padding, 2 0);
+
+	text-align: center;
+}
+
+.site-logo {
+	margin: 0;
+
+	> a {
+		display: inline-block;
+		text-decoration: none;
+
+		&:before {
+			@include x-rem(width, 15);
+			@include x-rem(height, 15);
+
+			content: '';
+			display: block;
+			margin: 0 auto;
+			background: url(../img/logo.svg) no-repeat 0 0;
+			background-size: contain;
+		}
+	}
+}
+
+
+.site-navigation {
+	@include x-rem(font-size, 1.25);
+
+	background: $highlight-light;
+
+	> ul {
+		@include x-rem(margin, 2 auto 0);
+
+		max-width: 960px;
+		padding: 0;
+
+		> li {
+			display: inline;
+		}
+	}
+
+	a {
+		@include x-rem(padding, 0.75 1);
+
+		display: inline-block;
+		text-decoration: none;
+
+		&:hover {
+			color: #fff;
+			background: darken($highlight, 20);
+		}
+	}
+}
+

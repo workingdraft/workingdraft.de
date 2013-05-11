@@ -9,7 +9,7 @@
 
 // Helpers
 @import "helpers/variables";
-@import "helpers/mixins";
+@import "../components/sass-mixins/mixins";
 @import "helpers/normalize";
 @import "helpers/helpers";
 
@@ -22,7 +22,8 @@
 @import "page/footer";
 
 // Modules
-@import "modules/box";
+@import "modules/soundwave";
+@import "modules/revision";
 
 // Print Stylesheets
 @media print {
