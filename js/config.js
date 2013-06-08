@@ -8,7 +8,8 @@ require.config({
 	deps: ['plugins/console', 'jquery', 'main'],
 
 	paths: {
-		'jquery': 'vendor/jquery-1.9.1.min'
+		'jquery': '../components/jquery/jquery.min',
+		'player': '../components/wdPlayer/wdPlayer'
 		// More additional paths here
 	},
 
