@@ -1,0 +1,8 @@
+{
+	"name": "workingdraft",
+	"version": "0.1.0pre",
+	"dependencies": {
+		"sass-mixins": "0.2.1",
+		"wdPlayer": "git@github.com:workingdraft/wdPlayer.git"
+	}
+}
