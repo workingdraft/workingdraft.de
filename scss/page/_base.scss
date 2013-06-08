@@ -100,6 +100,10 @@ a {
 	&:visited {
 		color: $highlight;
 	}
+
+	&:hover {
+		text-decoration: none;
+	}
 }
 
 

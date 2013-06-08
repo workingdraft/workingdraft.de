@@ -710,6 +710,9 @@ a {
 a:visited {
   color: #8f098f;
 }
+a:hover {
+  text-decoration: none;
+}
 
 /**
  * Content Area
@@ -782,8 +785,8 @@ a:visited {
  * The Site's footer
  */
 .site-footer {
-  margin-top: 48px;
-  margin-top: 3rem;
+  margin-top: 80px;
+  margin-top: 5rem;
   padding: 32px 0 0;
   padding: 2rem 0 0;
   font-size: 14px;
@@ -880,6 +883,21 @@ a:visited {
   padding: 0 2rem;
   max-width: 700px;
   margin: 0 auto;
+}
+
+.revision-title {
+  margin: 48px 0 8px;
+  margin: 3rem 0 0.5rem;
+}
+.revision-title > a {
+  text-decoration: none;
+}
+
+.revision-date,
+.revision-length,
+.revision-listen {
+  margin-right: 16px;
+  margin-right: 1rem;
 }
 
 @media print {

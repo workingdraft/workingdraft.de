@@ -3,7 +3,7 @@
  */
 
 .site-footer {
-	@include x-rem(margin-top, 3);
+	@include x-rem(margin-top, 5);
 	@include x-rem(padding, 2 0 0);
 	@include x-rem(font-size, 0.875);
 
