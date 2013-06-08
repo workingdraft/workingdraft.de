@@ -3,17 +3,17 @@
 	"title": "Working Draft",
 	"description": "A new theme for the Working Draft website",
 	"version": "0.1.0pre",
-	"homepage": "https://github.com/drublic/workingdraft",
+	"homepage": "https://github.com/wd/workingdraft.de",
 	"author": {
 		"name": "Hans Christian Reinl",
 		"url": "http://drublic.de"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/drublic/workingdraft.git"
+		"url": "git://github.com/wd/workingdraft.de.git"
 	},
 	"bugs": {
-		"url": "https://github.com/drublic/workingdraft/issues"
+		"url": "https://github.com/wd/workingdraft.de/issues"
 	},
 	"license": "MIT",
 	"dependencies": {},
