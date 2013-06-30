@@ -6,7 +6,8 @@
 require([
 	'jquery',
 	'loader',
-	'player'
+	'player',
+	'timejump'
 ], function ($, L, player) {
 	'use strict';
 
@@ -44,7 +45,7 @@ require([
 	};
 
 	var loadContent = function () {
-		var loadAction = 'index';
+		var loadAction = 'revision';
 
 		if (location.hash) {
 			if (location.hash.match(/^#\//)) {

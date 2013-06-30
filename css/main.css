@@ -886,6 +886,7 @@ a:hover {
   position: absolute;
   top: 130px;
   height: 20px;
+  pointer-events: none;
 }
 
 .wdplayer-timeline {

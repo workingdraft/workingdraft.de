@@ -33,14 +33,6 @@
       clear: function(){
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
       },
-      drawMouseX: function(x){
-        if(x > -1){
-          ctx.save();
-          ctx.fillStyle = 'black';
-          ctx.fillRect(x, 0, 1, ctx.canvas.height);
-          ctx.restore();
-        }
-      },
       drawTime: function(timeData, duration, currentTime){
         ctx.save();
         var current = timeData.length / duration * currentTime;
@@ -200,7 +192,6 @@
     paintEvents.onValue(function(data){
       painter.clear();
       painter.drawTime(fakeData, $player[0].duration, data.currentTime);
-      painter.drawMouseX(data.mouseX);
     });
 
 

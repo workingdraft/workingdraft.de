@@ -3,6 +3,7 @@
 	"version": "0.1.0pre",
 	"dependencies": {
 		"sass-mixins": "0.2.1",
-		"wdPlayer": "git@github.com:workingdraft/wdPlayer.git"
+		"wdPlayer": "git@github.com:workingdraft/wdPlayer.git",
+		"timejump": "https://github.com/davatron5000/TimeJump.git"
 	}
 }

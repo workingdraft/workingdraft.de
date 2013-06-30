@@ -10,7 +10,8 @@ require.config({
 	paths: {
 		'jquery': '../components/jquery/jquery.min',
 		'bacon': '../components/bacon/dist/Bacon.min',
-		'player': '../components/wdPlayer/wdPlayer'
+		'player': '../components/wdPlayer/wdPlayer',
+		'timejump': '../components/TimeJump/timeJump'
 	},
 
 	shim: {
