@@ -25,10 +25,22 @@ require([
 					height: 150,
 					width: 1100,
 					color: '#850051',
-					altColor: '#CCC'
+					altColor: '#3b3238'
 				}
 			}).appendTo('.soundwave');
+
+			initSoundwaveEvents();
 		}
+	};
+
+	var initSoundwaveEvents = function () {
+
+		// Click on timeline shout trigger play initially
+		$(document).on('click', '.wdplayer-timeline', function () {
+			if ($('.wdplayer').hasClass('wdplayer-paused')) {
+				$('.wdplayer-play').trigger('click');
+			}
+		});
 	};
 
 	var loadContent = function () {

@@ -76,11 +76,11 @@
     // ----------------
 
     // Player wrapper
-    var $wrapper = $('<div/>').addClass('wdPlayer');
+    var $wrapper = $('<div/>').addClass('wdplayer');
 
     // Audio element (invisible)
     var $player = $('<audio/>').attr({
-      class: 'wdPlayerAudio'
+      class: 'wdplayer-audio'
     });
 
     // Audio sources generated from options
@@ -92,13 +92,8 @@
     }
 
     //
-    var $time = $('<p>').attr({
-      class: 'wdPlayerTime'
-    });
-
-    //
     var $timeline = $('<canvas>').attr({
-      class: 'wdPlayerTimeline',
+      class: 'wdplayer-timeline',
       height: options.timelineStyle.height,
       width: options.timelineStyle.width
     });
@@ -109,7 +104,7 @@
 
     //
     var $playButton = $('<input>').attr({
-      class: 'wdPlayerPlayButton',
+      class: 'wdplayer-play',
       type: 'button'
     });
 
@@ -124,8 +119,8 @@
     ]).toProperty(false);
 
     // Classes for playing/paused state
-    playerPlaying.assign($wrapper, 'toggleClass', 'wdPlayerPlaying');
-    playerPlaying.not().assign($wrapper, 'toggleClass', 'wdPlayerPaused');
+    playerPlaying.assign($wrapper, 'toggleClass', 'wdplayer-playing');
+    playerPlaying.not().assign($wrapper, 'toggleClass', 'wdplayer-paused');
 
     // Start playing / pause player
     var playerCommand = $playButton.asEventStream('click').map(playerPlaying);
@@ -140,7 +135,7 @@
       $player.asEventStream('error').map(false)
     ]).toProperty(false);
     playerReady.not().assign($playButton, 'attr', 'disabled');
-    playerReady.assign($wrapper, 'toggleClass', 'wdPlayerReady');
+    playerReady.assign($wrapper, 'toggleClass', 'wdplayer-ready');
 
     // Map player error class to error event
     $player.asEventStream('error').map(true).toProperty(false).assign($wrapper, 'toggleClass', 'wdPlayerError');
@@ -182,7 +177,7 @@
     var currentTime = $player.asEventStream('timeupdate').map('.target.currentTime');
 
     // Map time streams to time box content
-    currentTime.toProperty(0).assign($time, 'html');
+    currentTime.toProperty(0).assign($timeline, 'attr', 'data-time');
 
     // Combined paint events stream
     var paintEvents = Bacon.combineTemplate({
@@ -216,7 +211,6 @@
     return $wrapper.append(
       $timeline,
       $player,
-      $time,
       $playButton
     );
 
