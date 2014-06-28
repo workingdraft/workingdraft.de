@@ -40,10 +40,10 @@ You can download the latest [generated javascript](https://raw.github.com/raimoh
 <script src="https://raw.github.com/raimohanska/bacon.js/master/dist/Bacon.js"></script>
 ```
 
-Version 0.3.15 can also be found from cdnjs hosting:
+Version 0.4.2 can also be found from cdnjs hosting:
 
-    http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.3.15/Bacon.js
-    http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.3.15/Bacon.min.js
+    http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.4.2/Bacon.js
+    http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.4.2/Bacon.min.js
 
 If you're targeting to [node.js](http://nodejs.org/), you can
 
@@ -408,19 +408,18 @@ is executed for each value, before dispatching to subscribers. This is
 useful for debugging, but also for stuff like calling the
 preventDefault() method for events. In fact, you can
 also use a property-extractor string instead of a function, as in
-".preventDefault". The old name for
-this method is `do` which is temporarily supported for backward
-compatibility.
+".preventDefault".
 
 `observable.not()` returns a stream/property that inverts boolean
 values
 
 `observable.flatMap(f)` for each element in the source stream, spawn a new
 stream using the function `f`. Collect events from each of the spawned
-streams into the result stream. This is very similar to selectMany in
+streams into the result `EventStream`. This is very similar to selectMany in
 RxJs. Note that instead of a function, you can provide a
 stream/property too. Also, the return value of function `f` can be either an 
-Observable (stream/property) or a constant value.
+Observable (stream/property) or a constant value. The result of
+`flatMap` is always an `EventStream`.
 
 stream.flatMap() can be used conveniently with `Bacon.once()` and `Bacon.never()` for converting and filtering at the same time, including only some of the results.
 
@@ -577,6 +576,24 @@ Bacon.fromArray([1,2,3])
   })
 ```
 
+`observable.decode(mapping)` decodes input using the given mapping. Is a
+bit like a switch-case or the decode function in Oracle SQL. For
+example, the following would map the value 1 into the the string "mike"
+and the value 2 into the value of the `who` property.
+
+```js
+property.decode({1 : "mike", 2 : who})
+```
+
+This is actually based on `combineTemplate` so you can compose static
+and dynamic data quite freely, as in
+
+```js
+property.decode({1 : { type: "mike" }, 2 : { type: "other", whoThen : who }})
+```
+
+The return value of `decode` is always a `Property`.
+
 EventStream
 -----------
 
@@ -616,6 +633,10 @@ stream.
 
 `stream.merge(stream2)` merges two streams into one stream that delivers
 events from both
+
+`stream.skipUntil(stream2)` skips elements from `stream` until a Next event
+appears in `stream2`. In other words, starts delivering values
+from `stream` after first event appears in `stream2`.
 
 `stream.bufferWithTime(delay)` buffers stream events with given delay.
 The buffer is flushed at most once in the given delay. So, if your input
@@ -734,22 +755,6 @@ events. Note that property.changes() does NOT skip duplicate values, use .skipDu
 
 `property.or(other)` combines properties with the `||` operator.
 
-`property.decode(mapping)` decodes input using the given mapping. Is a
-bit like a switch-case or the decode function in Oracle SQL. For
-example, the following would map the value 1 into the the string "mike"
-and the value 2 into the value of the `who` property.
-
-```js
-property.decode({1 : "mike", 2 : who})
-```
-
-This is actually based on `combineTemplate` so you can compose static
-and dynamic data quite freely, as in
-
-```js
-property.decode({1 : { type: "mike" }, 2 : { type: "other", whoThen : who }})
-```
-
 Combining multiple streams and properties
 -----------------------------------------
 
@@ -798,7 +803,7 @@ streams using that template, whenever any of the streams/properties
 get a new value. For instance, it could yield a value such as
 
 ```js
-{ magicNumer: 3,
+{ magicNumber: 3,
   userid: "juha",
   passwd: "easy",
   name : { first: "juha", last: "paananen" }}
@@ -815,6 +820,7 @@ Bacon.combineWith(function(v1,v2) { .. }, stream1, stream2).changes()
 ```
 
 `Bacon.mergeAll(streams)` merges given array of EventStreams.
+`Bacon.mergeAll(stream1, stream2 ...)` merges given EventStreams.
 
 `Bacon.zipAsArray(streams)` zips the array of stream in to a new
 EventStream that will have an array of values from each source stream as
@@ -843,6 +849,9 @@ provided as a list of arguments as opposed to a single array.
 
 `Bacon.zipWith(streams, f)` like `zipAsArray` but uses the given n-ary
 function to combine the n values from n streams, instead of returning them in an Array.
+
+`Bacon.zipWith(f, stream1, stream1 ...)` just like above, but with streams
+provided as a list of arguments as opposed to a single array.
 
 `Bacon.onValues(a, b [, c...], f)` is a shorthand for combining multiple
 sources (streams, properties, constants) as array and assigning the
@@ -898,14 +907,12 @@ for `["cat", "dog"]`
 array that is a field in the stream value. For example, you'd get 2 for
 `{ stuffs : ["thing", "object"] }`
 
-`stream.map(".dudes.1") would pick the second object from the nested
+`stream.map(".dudes.1")` would pick the second object from the nested
 "dudes" array. For example, you'd get "jack" for `{ dudes : ["john",
 "jack"] }`.
 
 `stream.doAction(".preventDefault")` would call the "preventDefault" method of
-stream values. The old name for
-this method is `do` which is temporarily supported for backward
-compatibility.
+stream values.
 
 `stream.filter(".attr", "disabled").not()` would call `.attr("disabled")` on
 stream values and filter by the return value. This would practically
@@ -918,7 +925,7 @@ instance:
 object `{ isMouseClick: true }`
 
 Methods that support function construction include
-at least `onValue`, `onError`, `onEnd`, `map`, `filter`, `assign`, `takeWhile`, `mapError` and `do`.
+at least `onValue`, `onError`, `onEnd`, `map`, `filter`, `assign`, `takeWhile`, `mapError` and `doAction`.
 
 Latest value of Property or EventStream
 ---------------------------------------

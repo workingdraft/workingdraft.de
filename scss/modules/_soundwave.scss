@@ -3,42 +3,32 @@
  */
 
 .wdplayer {
-	@include x-rem(padding, 0 2 2);
-
 	position: relative;
-	max-width: 1100px;
+	width: 1100px;
+	max-width: 100%;
 	width: auto;
 	margin: 0 auto;
-
-
-	&:after {
-		@include x-rem(right, 2);
-		@include x-rem(left, 2);
-		@include x-linear-gradient('to bottom', rgba(0,0,0,0), rgba(16,0,10,0), rgba(16,0,10,0.2));
-
-		content: '';
-
-		position: absolute;
-		top: 130px;
-		height: 20px;
-
-		pointer-events: none;
-	}
+	padding: 0 2rem 2rem;
 }
 
 .wdplayer-timeline {
 	display: block;
+	max-width: 100%;
+	margin: 0 auto;
 }
 
 .wdplayer-play {
+	position: relative;
+	z-index: 20;
 	display: block;
-	width: 32px;
-	height: 32px;
-	background: url(../img/play.png);
-	background-size: 100% auto;
-	border: 0;
+	width: 2rem;
+	height: 2rem;
+	margin: -2.5rem auto 0;
 	text-indent: -200em;
 	overflow: hidden;
+	border: 0;
+	background: url(../img/play.png);
+	background-size: 100% auto;
 
 	.wdplayer-playing & {
 		background-image: url(../img/pause.png);

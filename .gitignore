@@ -3,7 +3,9 @@
 
 *.sass-cache
 *.sublime-*
+*.grunt
 
 node_modules
+components
 dist
-
+tests/_SpecRunner.html

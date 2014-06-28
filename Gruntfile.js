@@ -129,13 +129,13 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jasmine');
 
 	// A task for development
-	grunt.registerTask('dev', ['jshint', 'jasmine', 'sass:dev']);
+	grunt.registerTask('dev', ['jshint', 'sass:dev']);
 
 	// A task for deployment
 	grunt.registerTask('deploy', ['jshint', 'jasmine', 'clean', 'modernizr', 'sass:deploy', 'requirejs', 'copy']);
 
 	// Default task
-	grunt.registerTask('default', ['jshint', 'jasmine', 'sass:dev', 'requirejs', 'copy']);
+	grunt.registerTask('default', ['jshint', 'sass:dev', 'requirejs', 'copy']);
 
 	// Travis CI task
 	grunt.registerTask('travis', ['jshint', 'jasmine']);

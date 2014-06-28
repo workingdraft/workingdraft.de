@@ -1,25 +1,15 @@
 {
-  "name": "wdPlayer",
-  "version": "0.0.0",
-  "main": "wdPlayer.js",
-  "ignore": [
-    ".jshintrc",
-    "demo",
-    "LICENSE.md",
-    "README.md"
-  ],
-  "dependencies": {
-    "bacon": "~0.4.x",
-    "jquery": "~1.x.x"
-  },
-  "gitHead": "373a3602b0720a25f1bff599b18dccb3be4cd45a",
-  "readme": "wdPlayer\n========\n\nHTML5 audio player for [Working Draft](http://workingdraft.de/).\n\nRequires jQuery and [Bacon.js](https://github.com/raimohanska/bacon.js).\n\nWork in progress.",
-  "readmeFilename": "readme.md",
-  "_id": "wdPlayer@0.1.0pre",
-  "description": "wdPlayer ========",
-  "commit": "373a3602b0720a25f1bff599b18dccb3be4cd45a",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:workingdraft/wdPlayer.git"
-  }
+	"name": "wdPlayer",
+	"version": "0.1.0pre",
+	"main": "wdPlayer.js",
+	"ignore": [
+		".jshintrc",
+		"demo",
+		"LICENSE.md",
+		"README.md"
+	],
+	"dependencies": {
+		"bacon": "~0.4.x",
+		"jquery": "~1.x.x"
+	}
 }

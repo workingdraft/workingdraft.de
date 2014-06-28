@@ -17,7 +17,7 @@
 */
 /*jslint browser: true*/
 
-function timeJump() {
+(function timeJump() {
     "use strict";
     var getQueryVariable = function() {
         var regex = /\bt=([\dhHmMsS.:]*)(?:,([\dhHmMsS.:]+))?\b/g,
@@ -55,7 +55,11 @@ function timeJump() {
         timestamp = parseTime(t);
         media = document.querySelector('audio, video');
         if (!!media) {
+            // Preload the media
             media.setAttribute('preload', 'true');
+            // Set the current time. Will update if playing. Will fail if paused.
+            media.currentTime = timestamp;
+            // If the media is able to play, play.
             media.addEventListener('canplay', function () {
                 /* only start the player if it is not already playing */
                 if( !this.paused){
@@ -64,18 +68,15 @@ function timeJump() {
                 this.currentTime = timestamp;
                 this.play();
             }, false);
-            if(!media.paused) {
-                media.currentTime = timestamp;
-            }
         }
     }
 
     if (window.addEventListener) {
+        window.addEventListener("DOMContentLoaded", timeJump, false);
         window.addEventListener("hashchange", timeJump, false);
     }
     else if (window.attachEvent) {
+        window.attachEvent("onload", timeJump);
         window.attachEvent("onhashchange", timeJump);
     }
-}
-
-timeJump();
+}());

@@ -1,6 +1,34 @@
+## 0.4.10
+
+- Fix #195: Bacon.mergeAll for empty list should return Bacon.never()
+
+## 0.4.9
+
+- (#192) Throw runtime error if trying to merge Properties
+
+## 0.4.8
+
+- Add EventStream.skipUntil (#194)
+
+## 0.4.7
+
+- Fix #191: End properly even if an exception is thrown (sequentially, take)
+
+## 0.4.6
+
+- Support n-ary syntax in Bacon.mergeAll and Bacon.zipWith
+
+## 0.4.5
+
+- Add bower.json (component.json deprecated by bower)
+
+## 0.4.3
+
+- Generalize `decode` to all Observables (#189)
+
 ## 0.4.2
 
-- add bufferWithTimeOrCount (#181)
+- Add bufferWithTimeOrCount (#181)
 
 ## 0.4.1
 
@@ -10,6 +38,7 @@
 ## 0.4.0
 
 - Fix #85 Make Property updates atomic (with known limitations)
+
 ## 0.3.15
 
 - Add support for "min" parameter in slidingWindow.

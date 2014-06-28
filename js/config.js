@@ -8,7 +8,7 @@ require.config({
 	deps: ['plugins/console', 'jquery', 'main'],
 
 	paths: {
-		'jquery': '../components/jquery/jquery.min',
+		'jquery': '../components/jquery/dist/jquery.min',
 		'bacon': '../components/bacon/dist/Bacon.min',
 		'player': '../components/wdPlayer/wdPlayer',
 		'timejump': '../components/TimeJump/timeJump'

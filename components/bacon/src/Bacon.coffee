@@ -13,6 +13,7 @@ Bacon.fromBinder = (binder, eventTransformer = _.id) ->
       value = eventTransformer(args...)
       unless value instanceof Array and _.last(value) instanceof Event
         value = [value]
+
       for event in value
         reply = sink(event = toEvent(event))
         if reply == Bacon.noMore or event.isEnd()
@@ -72,7 +73,12 @@ Bacon.sequentially = (delay, values) ->
   index = 0
   Bacon.fromPoll delay, ->
     value = values[index++]
-    if index < values.length then value else [value, end()]
+    if index < values.length 
+      value 
+    else if index == values.length
+      [value, end()]
+    else
+      end()
 
 Bacon.repeatedly = (delay, values) ->
   index = 0
@@ -125,19 +131,21 @@ sendWrapped = (values, wrapper) ->
     sink (end())
     nop
 
-Bacon.mergeAll = (streams) ->
-  assertArray streams
-  stream = _.head streams
-  for next in (_.tail streams)
-    stream = stream.merge(next)
-  stream
+Bacon.mergeAll = (streams, more...) ->
+  if not (streams instanceof Array)
+    streams = [streams].concat(more)
+  _.fold(streams, Bacon.never(), ((a, b) -> a.merge(b)))
 
 Bacon.zipAsArray = (streams, more...) ->
   if not (streams instanceof Array)
     streams = [streams].concat(more)
   Bacon.zipWith(streams, Array)
 
-Bacon.zipWith = (streams, f) ->
+Bacon.zipWith = (streams, f, more...) ->
+    if isFunction(streams)
+      g = streams
+      streams = [f].concat(more)
+      f = g
     new EventStream (sink) ->
       bufs = ([] for s in streams)
       unsubscribed = false
@@ -355,7 +363,7 @@ class Observable
         if count > 0
           @push event
         else
-          @push event
+          @push event if count == 0
           @push end()
           Bacon.noMore
 
@@ -415,6 +423,7 @@ class Observable
       unsubSrc = src.subscribe(srcSink)
       unsubStopper = stopper.subscribe(stopperSink) unless unsubscribed
       unsubBoth
+
   skip : (count) ->
     @withHandler (event) ->
       if !event.hasValue()
@@ -424,6 +433,7 @@ class Observable
         Bacon.more
       else
         @push event
+
   skipDuplicates: (isEqual = (a, b) -> a is b) ->
     @withStateMachine None, (prev, event) ->
       if !event.hasValue()
@@ -556,6 +566,7 @@ class Observable
     Bacon.combineAsArray(this, other)
       .map (values) ->
         combinator(values[0], values[1])
+  decode: (cases) -> @combine(Bacon.combineTemplate(cases), (key, values) -> values[key])
 
 Observable :: reduce = Observable :: fold
 
@@ -637,6 +648,7 @@ class EventStream extends Observable
       reply
 
   merge: (right) ->
+    assertEventStream(right)
     left = this
     new EventStream (sink) ->
       unsubLeft = nop
@@ -674,6 +686,9 @@ class EventStream extends Observable
         else
           sink(e)
       -> unsub()
+
+  skipUntil: (starter) ->
+    starter.take(1).flatMap(this)
 
   awaiting: (other) ->
     this.map(true).merge(other.map(false)).toProperty(false)
@@ -774,7 +789,6 @@ class Property extends Observable
         sink event
   and: (other) -> @combine(other, (x, y) -> x && y)
   or:  (other) -> @combine(other, (x, y) -> x || y)
-  decode: (cases) -> @combine(Bacon.combineTemplate(cases), (key, values) -> values[key])
   delay: (delay) -> @delayChanges((changes) -> changes.delay(delay))
   debounce: (delay) -> @delayChanges((changes) -> changes.debounce(delay))
   throttle: (delay) -> @delayChanges((changes) -> changes.throttle(delay))
@@ -1007,6 +1021,7 @@ else
     -1
 assert = (message, condition) -> throw message unless condition
 assertEvent = (event) -> assert "not an event : " + event, event instanceof Event and event.isEvent()
+assertEventStream = (event) -> assert "not an EventStream : " + event, event instanceof EventStream
 assertFunction = (f) -> assert "not a function : " + f, isFunction(f)
 isFunction = (f) -> typeof f == "function"
 assertArray = (xs) -> assert "not an array : " + xs, xs instanceof Array
@@ -1103,6 +1118,10 @@ _ = {
     i = indexOf(xs, x)
     if i >= 0
       xs.splice(i, 1)
+  fold: (xs, seed, f) ->
+    for x in xs
+      seed = f(seed, x)
+    seed
 }
 
 Bacon._ = _

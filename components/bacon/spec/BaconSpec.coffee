@@ -36,6 +36,15 @@ describe "Bacon.sequentially", ->
     expectStreamEvents(
       -> Bacon.sequentially(t(1), [error(), "lol"])
       [error(), "lol"])
+  it "will stop properly even when exception thrown by subscriber", ->
+    expectStreamEvents(
+      ->
+        s = Bacon.sequentially(t(1), ["lol", "wut"])
+        s.onValue (value) ->
+          throw "testing"
+        s
+      [])
+
 describe "Bacon.interval", ->
   it "repeats single element indefinitely", ->
     expectStreamEvents(
@@ -288,6 +297,14 @@ describe "EventStream.take", ->
     expectStreamEvents(
       -> series(1, [1,2,3,4]).take(0)
       [])
+  it "will stop properly even when exception thrown by subscriber", ->
+    expectStreamEvents(
+      ->
+        s = Bacon.repeatedly(t(1), ["lol", "wut"]).take(2)
+        s.onValue (value) ->
+          throw "testing"
+        s
+      [])
 
 describe "EventStream.takeWhile", ->
   it "should take while predicate is true", ->
@@ -499,6 +516,16 @@ describe "EventStream.bufferWithTimeOrCount", ->
     expectStreamEvents(
       -> series(2, [error(), 1, 2, 3, 4, 5, 6, 7]).bufferWithTimeOrCount(t(7), 10)
       [error(), [1, 2, 3, 4], [5, 6, 7]])
+
+describe "EventStream.skipUntil", ->
+  it "skips events until one appears in given starter stream", ->
+    expectStreamEvents(
+      ->
+        src = series(3, [1,2,3])
+        src.onValue(->) # to start "time" immediately instead of on subscribe
+        starter = series(4, ["start"])
+        src.skipUntil(starter)
+      [2,3])
 
 describe "EventStream.takeUntil", ->
   it "takes elements from source until an event appears in the other stream", ->
@@ -979,6 +1006,18 @@ describe "Bacon.mergeAll", ->
           series(3, [3, 4]).delay(t(1))
           series(3, [5, 6]).delay(t(2))])
       [1, 3, 5, 2, 4, 6])
+  it ("supports n-ary syntax"), ->
+    expectStreamEvents(
+      ->
+        Bacon.mergeAll(
+          series(3, [1, 2])
+          series(3, [3, 4]).delay(t(1))
+          series(3, [5, 6]).delay(t(2)))
+      [1, 3, 5, 2, 4, 6])
+  it "returns empty stream for zero input", ->
+    expectStreamEvents(
+      -> Bacon.mergeAll([])
+      [])
 
 describe "Property.sampledBy(stream)", ->
   it "samples property at events, resulting to EventStream", ->
@@ -1042,6 +1081,22 @@ describe "Property.sampledBy(stream)", ->
         combined.onValue(->)
         src.sampledBy(combined, add)
       ["aa", "bb", "cc"])
+  it "skips samplings that occur before the property gets its first value", ->
+    expectStreamEvents(
+      ->
+        p = series(5, [1]).toProperty()
+        p.sampledBy(series(3, [0]))
+      [])
+    expectStreamEvents(
+      -> 
+        p = series(5, [1, 2]).toProperty()
+        p.sampledBy(series(3, [0, 0, 0, 0]))
+      [1, 1, 2])
+    expectPropertyEvents(
+      -> 
+        p = series(5, [1, 2]).toProperty()
+        p.sampledBy(series(3, [0, 0, 0, 0]).toProperty())
+      [1, 1, 2])
 
 describe "Property.sampledBy(property)", ->
   it "samples property at events, resulting to a Property", ->
@@ -1225,6 +1280,13 @@ describe "Bacon.zipWith", ->
         obs = series(1, [1, 2, 3, 4])
         Bacon.zipWith([obs, obs.skip(1), obs.skip(2)], ((x,y,z) -> (x + y + z)))
     [1 + 2 + 3, 2 + 3 + 4])
+  it "supports n-ary syntax", ->
+    expectStreamEvents(
+      ->
+        obs = series(1, [1, 2, 3, 4])
+        f = ((x,y,z) -> (x + y + z))
+        Bacon.zipWith(f, obs, obs.skip(1), obs.skip(2))
+    [1 + 2 + 3, 2 + 3 + 4])
 
 describe "combineTemplate", ->
   it "combines streams according to a template object", ->
@@ -1303,6 +1365,16 @@ describe "Property.decode", ->
         b = Bacon.constant("b")
         c = Bacon.constant("c")
         series(1, [1,2,3]).toProperty().decode({1: a, 2: b, 3: c})
+      ["a", "b", "c"])
+
+describe "EventStream.decode", ->
+  it "switches between source Properties based on property value", ->
+    expectPropertyEvents(
+      ->
+        a = Bacon.constant("a")
+        b = Bacon.constant("b")
+        c = Bacon.constant("c")
+        series(1, [1,2,3]).decode({1: a, 2: b, 3: c})
       ["a", "b", "c"])
 
 describe "Observable.onValues", ->
