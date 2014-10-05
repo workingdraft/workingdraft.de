@@ -1,0 +1,103 @@
+/**
+ * Navigation
+ */
+.navigation {
+
+  position: absolute;
+  right: 0;
+
+  > ul {
+    @include x-rem(margin, 0.3 3 0 0);
+
+    display: none;
+    list-style: none;
+    padding: 0;
+    text-align: right;
+  }
+
+  a {
+    @include x-rem(padding, 0.75 0 0.25);
+    @include x-rem(margin-bottom, 0.5);
+
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 2px solid #fff;
+
+    &:hover {
+      border-bottom-color: darken($highlight, 10);
+    }
+  }
+
+  &--visible {
+    > ul {
+      display: block;
+    }
+  }
+}
+
+.navigation__toggle {
+  @include x-rem(padding, 1 2.5 1 0.5);
+
+  display: inline-block;
+  float: right;
+  position: relative;
+  background: none;
+  border: 0;
+  color: $highlight;
+
+  transition: color 100ms;
+}
+
+.navigation__toggle:focus {
+  outline: none;
+}
+
+.navigation__toggle span,
+.navigation__toggle span:before,
+.navigation__toggle span:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  background: $highlight;
+  width: 28px;
+  height: 4px;
+  cursor: pointer;
+  border-radius: 1px;
+
+  transition: 250ms ease-in-out;
+}
+
+.navigation__toggle span {
+  margin-top: 9px;
+}
+
+.navigation__toggle span:before {
+  top: -8px;
+}
+.navigation__toggle span:after {
+  bottom: -8px;
+}
+
+/**
+ * Visible
+ */
+.navigation--visible .navigation__toggle {
+  text-indent: -99em;
+}
+
+.navigation--visible .navigation__toggle span {
+  background-color: transparent;
+}
+
+.navigation--visible .navigation__toggle span:before,
+.navigation--visible .navigation__toggle span:after {
+  top: 0;
+}
+
+.navigation--visible .navigation__toggle span:before {
+  transform: rotate(45deg);
+}
+
+.navigation--visible .navigation__toggle span:after {
+  transform: rotate(-45deg);
+}

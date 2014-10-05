@@ -6,6 +6,6 @@
 *.grunt
 
 node_modules
-components
+bower_components
 dist
-tests/_SpecRunner.html
+test/_SpecRunner.html

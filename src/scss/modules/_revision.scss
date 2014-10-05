@@ -1,0 +1,41 @@
+/**
+ * Revisions
+ */
+
+.revision {
+  @include x-rem(padding, 0 2);
+
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.revision-title {
+  @include x-rem(margin, 3 0 0.5);
+
+  > a {
+    text-decoration: none;
+  }
+}
+
+.revision-date,
+.revision-length,
+.revision-listen {
+  @include x-rem(margin-right, 1);
+}
+
+.revision-topics {
+}
+
+.revision-content dl {
+  margin-top: 0;
+}
+
+.revision-content dt {
+  @include x-rem(margin-top, 1);
+  @include x-rem(padding, 0.5 0 0.25);
+  @include x-rem(font-size, 1.25);
+}
+
+.revision-content dd {
+  margin-left: 0;
+}

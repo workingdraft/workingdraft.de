@@ -1,116 +1,107 @@
 <!DOCTYPE html>
 <html class="no-js">
-	<head>
-		<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-		<title>Working Draft</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width">
+    <title>Working Draft</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
 
-		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-		<link rel="stylesheet" href="css/main.css">
-		<script src="js/vendor/modernizr-2.6.2.js"></script>
-	</head>
-	<body>
-		<!--[if lt IE 8]>
-			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-		<![endif]-->
+    <link rel="stylesheet" href="css/main.css">
+    <script src="bower_components/modernizr/modernizr.js"></script>
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
 
-		<header class="site-header">
-			<h1 class="site-logo" role="banner">
-				<a href="#">Working Draft</a>
-			</h1>
+    <header class="header">
+      <nav class="navigation">
+        <button class="navigation__toggle">Menu<span></span></button>
 
-			<nav class="site-navigation">
-				<ul>
-					<li><a href="#">Startseite</a></li>
-					<li><a href="#">Live</a></li>
-					<li><a href="#">Kontakt</a></li>
-					<li><a href="#">Zuhören: RSS oder iTunes</a></li>
-				</ul>
-			</nav>
-		</header>
+        <ul>
+          <li><a href="#">Startseite</a></li>
+          <li><a href="#">Live</a></li>
+          <li><a href="#">Kontakt</a></li>
+          <li><a href="#">Zuhören: RSS oder iTunes</a></li>
+        </ul>
+      </nav>
 
-		<div class="main" role="main">
+      <h1 class="header__logo" role="banner">
+        <a href="#">Working Draft</a>
+      </h1>
+    </header>
 
+    <div class="main" role="main"></div>
 
-		</div>
+    <footer class="footer">
 
-		<footer class="site-footer">
+      <p>Working Draft ist ein wöchentlicher News-Podcast für Webdesigner und -entwickler gehostet von und mit:</p>
 
-			<p>Working Draft ist ein wöchentlicher News-Podcast für Webdesigner und -entwickler gehostet von und mit:</p>
+      <ul class="footer__authors">
+        <li>
+          <a href="http://twitter.com/derSchepp">
+            <img src="http://twitter.com/api/users/profile_image/derSchepp/?size=bigger" alt="Christian Schaefer">
+            Christian Schaefer
+          </a>
+        </li>
+        <li>
+          <a href="http://twitter.com/sir_pepe">
+            <img src="http://twitter.com/api/users/profile_image/sir_pepe/?size=bigger" alt="Peter Kröner">
+            Peter Kröner
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/drublic">
+            <img src="http://twitter.com/api/users/profile_image/drublic/?size=bigger" alt="Hans Christian Reinl">
+            Hans Christian Reinl
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/rodneyrehm">
+            <img src="http://twitter.com/api/users/profile_image/rodneyrehm/?size=bigger" alt="Rodney Rehm">
+            Rodney Rehm
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/ddprrt">
+            <img src="http://twitter.com/api/users/profile_image/ddprrt/?size=bigger" alt="Stefan Baumgartner">
+            Stefan Baumgartner
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/helloanselm">
+            <img src="http://twitter.com/api/users/profile_image/helloanselm/?size=bigger" alt="Anselm Hannemann">
+            Anselm Hannemann
+          </a>
+        </li>
+      </ul>
 
-			<ul class="authors">
-				<li>
-					<a href="http://twitter.com/derSchepp">
-						<img src="http://twitter.com/api/users/profile_image/derSchepp/?size=bigger" alt="Christian Schaefer">
-						Christian Schaefer
-					</a>
-				</li>
-				<li>
-					<a href="http://twitter.com/sir_pepe">
-						<img src="http://twitter.com/api/users/profile_image/sir_pepe/?size=bigger" alt="Peter Kröner">
-						Peter Kröner
-					</a>
-				</li>
-				<li>
-					<a href="https://twitter.com/drublic">
-						<img src="http://twitter.com/api/users/profile_image/drublic/?size=bigger" alt="Hans Christian Reinl">
-						Hans Christian Reinl
-					</a>
-				</li>
-				<li>
-					<a href="https://twitter.com/rodneyrehm">
-						<img src="http://twitter.com/api/users/profile_image/rodneyrehm/?size=bigger" alt="Rodney Rehm">
-						Rodney Rehm
-					</a>
-				</li>
-				<li>
-					<a href="https://twitter.com/ddprrt">
-						<img src="http://twitter.com/api/users/profile_image/ddprrt/?size=bigger" alt="Stefan Baumgartner">
-						Stefan Baumgartner
-					</a>
-				</li>
-				<li>
-					<a href="https://twitter.com/helloanselm">
-						<img src="http://twitter.com/api/users/profile_image/helloanselm/?size=bigger" alt="Anselm Hannemann">
-						Anselm Hannemann
-					</a>
-				</li>
-			</ul>
+      <p class="footer__authors__other">
+        und <a href="https://twitter.com/hellokahlil">Kahlil Lechelt</a>
+        &amp; <a href="https://twitter.com/markus_schlegel">Markus Schlegel</a>.
+      </p>
 
-			<p class="authors-other">
-				und <a href="https://twitter.com/hellokahlil">Kahlil Lechelt</a>
-				&amp; <a href="https://twitter.com/markus_schlegel">Markus Schlegel</a>.
-			</p>
+      <p class="footer__follow">
+        <a href="https://twitter.com/workingdraft"
+            class="twitter-follow-button" data-show-count="false"
+            data-size="large">Follow @workingdraft</a>
+      </p>
 
-			<p class="follow-us">
-				<a href="https://twitter.com/workingdraft"
-						class="twitter-follow-button" data-show-count="false"
-						data-size="large">Follow @workingdraft</a>
-			</p>
+      <nav class="footer__navigation">
+        <ul>
+          <li><a href="#">Archiv</a></li>
+          <li><a href="#">Impressum</a></li>
+          <li><a href="#">Kontakt</a></li>
+        </ul>
+      </nav>
+    </footer>
 
-			<nav class="footer-navigation">
-				<ul>
-					<li><a href="#">Archiv</a></li>
-					<li><a href="#">Impressum</a></li>
-					<li><a href="#">Kontakt</a></li>
-				</ul>
-			</nav>
-		</footer>
+    <!-- Add RequireJS -->
+    <script data-main="src/js/config" src="bower_components/requirejs/require.js"></script>
 
-		<!-- Add RequireJS -->
-		<script data-main="js/config" src="js/vendor/require.js"></script>
-
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-		<script>
-			var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-			g.src='//www.google-analytics.com/ga.js';
-			s.parentNode.insertBefore(g,s)}(document,'script'));
-		</script>
-	</body>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </body>
 </html>

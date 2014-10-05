@@ -1,0 +1,78 @@
+/**
+ * The Site's footer
+ */
+
+.footer {
+  @include x-rem(margin-top, 5);
+  @include x-rem(padding, 2 0 0);
+  @include x-rem(font-size, 0.875);
+
+  background: $highlight-dark;
+  color: #fff;
+  text-align: center;
+
+  a {
+    color: $highlight-light;
+
+    &:visited {
+      color: $highlight-light;
+    }
+  }
+}
+
+.footer__authors {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  > li {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  a {
+    @include x-rem(width, 6);
+    @include x-rem(padding, 0.5);
+
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  img {
+    @include x-rem(width, 4);
+    @include x-rem(height, 4);
+    @include x-rem(margin, 0 auto 1);
+    @include x-border-radius(50%);
+
+    display: block;
+  }
+}
+
+.footer__authors__other {
+  @include x-rem(font-size, 0.75);
+}
+
+.footer__follow {
+  @include x-rem(margin, 3 0);
+}
+
+
+.footer__navigation {
+  @include x-rem(padding, 1 2 2);
+  background: darken($highlight-dark, 5);
+
+  > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      display: inline;
+
+      > a {
+        @include x-rem(margin, 0 1);
+      }
+    }
+  }
+}
+

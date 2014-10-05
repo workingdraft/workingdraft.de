@@ -1,0 +1,30 @@
+/**
+ * Page Header and Navigation
+ */
+
+.header {
+  @include x-rem(padding, 2);
+  @include x-rem(max-width, 50);
+
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.header__logo {
+  > a {
+    display: inline-block;
+    text-decoration: none;
+
+    &:before {
+      @include x-rem(width, 15);
+      @include x-rem(height, 15);
+
+      content: '';
+      display: block;
+      margin: 0 auto;
+      background: url(../src/img/logo.svg) no-repeat 0 0;
+      background-size: contain;
+    }
+  }
+}

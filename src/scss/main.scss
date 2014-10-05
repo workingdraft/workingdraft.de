@@ -1,0 +1,25 @@
+/*!
+ *	This project's description goes here
+ *
+ *	@author		Some author's name
+ *	@version	v0.0.0
+ *
+ */
+
+
+// Helpers
+@import 'helpers/variables';
+@import '../../bower_components/sass-mixins/mixins';
+@import '../../bower_components/normalize-scss/normalize';
+@import 'helpers/helpers';
+
+// Layout
+@import 'layout/typography';
+@import 'layout/base';
+@import 'layout/header';
+@import 'layout/navigation';
+@import 'layout/footer';
+
+// Modules
+@import 'modules/soundwave';
+@import 'modules/revision';
