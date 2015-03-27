@@ -67,7 +67,7 @@ module.exports = function (grunt) {
         options: {
           baseUrl: 'src/js/',
           mainConfigFile: 'src/js/config.js',
-          include: ['Vendor/require'],
+          include: ['main'],
           out: 'dist/js/main-<%= pkg.version %>.min.js'
         }
       }
@@ -79,6 +79,28 @@ module.exports = function (grunt) {
           src: ['src/js/**'],
           dest: 'dist/'
         }]
+      }
+    },
+
+    "imagemagick-resize": {
+      dev: {
+        from: 'src/img/hosts/',
+        to: 'build/img/hosts/',
+        files: '*',
+        props: {
+          width: 100
+        }
+      }
+    },
+
+    imageoptim: {
+      build: {
+        options: {
+          jpegMini: false,
+          imageAlpha: false,
+          quitAfter: true
+        },
+        src: ['build/img'],
       }
     },
 
@@ -127,12 +149,24 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-imagemagick');
+  grunt.loadNpmTasks('grunt-imageoptim');
 
   // A task for development
   grunt.registerTask('dev', ['jshint', 'sass:dev']);
 
   // A task for deployment
-  grunt.registerTask('deploy', ['jshint', 'jasmine', 'clean', 'modernizr', 'sass:deploy', 'requirejs', 'copy']);
+  grunt.registerTask('build', [
+    'jshint',
+    // 'jasmine',
+    'clean',
+    // 'modernizr',
+    'sass:deploy',
+    'requirejs',
+    'copy',
+    'imagemagick-resize',
+    'imageoptim'
+  ]);
 
   // Default task
   grunt.registerTask('default', ['jshint', 'sass:dev', 'requirejs', 'copy']);
