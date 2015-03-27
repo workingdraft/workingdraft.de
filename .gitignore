@@ -9,3 +9,5 @@ node_modules
 bower_components
 dist
 test/_SpecRunner.html
+build/
+css/
