@@ -88,8 +88,7 @@ a {
 
 
 .error-page {
-  @include x-rem(padding, 0 2);
-
-  max-width: 700px;
+  max-width: 40rem;
   margin: 0 auto;
+  padding: 0 2rem;
 }

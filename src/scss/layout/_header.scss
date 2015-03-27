@@ -3,11 +3,10 @@
  */
 
 .header {
-  @include x-rem(padding, 2);
-  @include x-rem(max-width, 50);
-
   position: relative;
+  max-width: 50rem;
   margin: 0 auto;
+  padding: 2rem;
   text-align: center;
 }
 
@@ -17,9 +16,8 @@
     text-decoration: none;
 
     &:before {
-      @include x-rem(width, 15);
-      @include x-rem(height, 15);
-
+      width: 15rem;
+      height: 15rem;
       content: '';
       display: block;
       margin: 0 auto;

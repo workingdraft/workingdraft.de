@@ -7,19 +7,17 @@
   right: 0;
 
   > ul {
-    @include x-rem(margin, 0.3 3 0 0);
-
     display: none;
+    margin: 0.3rem 3rem 0 0;
     list-style: none;
     padding: 0;
     text-align: right;
   }
 
   a {
-    @include x-rem(padding, 0.75 0 0.25);
-    @include x-rem(margin-bottom, 0.5);
-
     display: inline-block;
+    margin-bottom: 0.5rem;
+    padding: 0.75rem 0 0.25rem 0.25rem;
     text-decoration: none;
     border-bottom: 2px solid #fff;
 
@@ -36,15 +34,13 @@
 }
 
 .navigation__toggle {
-  @include x-rem(padding, 1 2.5 1 0.5);
-
   display: inline-block;
   float: right;
   position: relative;
+  padding: 1rem 2.5rem 1rem 0.5rem;
   background: none;
   border: 0;
   color: $highlight;
-
   transition: color 100ms;
 }
 
@@ -83,6 +79,7 @@
  */
 .navigation--visible .navigation__toggle {
   text-indent: -99em;
+  overflow: hidden;
 }
 
 .navigation--visible .navigation__toggle span {

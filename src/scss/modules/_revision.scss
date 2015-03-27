@@ -3,14 +3,13 @@
  */
 
 .revision {
-  @include x-rem(padding, 0 2);
-
-  max-width: 700px;
+  max-width: 40rem;
   margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .revision-title {
-  @include x-rem(margin, 3 0 0.5);
+  margin: 3rem 0 0.5rem 0.5rem;
 
   > a {
     text-decoration: none;
@@ -20,20 +19,19 @@
 .revision-date,
 .revision-length,
 .revision-listen {
-  @include x-rem(margin-right, 1);
+  margin-right: 1rem;
 }
 
-.revision-topics {
-}
+.revision-topics {}
 
 .revision-content dl {
   margin-top: 0;
 }
 
 .revision-content dt {
-  @include x-rem(margin-top, 1);
-  @include x-rem(padding, 0.5 0 0.25);
-  @include x-rem(font-size, 1.25);
+  margin-top: 1rem;
+  padding: 0.5rem 0 0.25rem 0.25rem;
+  font-size: 1.25rem;
 }
 
 .revision-content dd {

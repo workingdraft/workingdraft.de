@@ -3,10 +3,9 @@
  */
 
 .footer {
-  @include x-rem(margin-top, 5);
-  @include x-rem(padding, 2 0 0);
-  @include x-rem(font-size, 0.875);
-
+  font-size: 0.875rem;
+  margin-top: 5rem;
+  padding: 2rem 0 0 0;
   background: $highlight-dark;
   color: #fff;
   text-align: center;
@@ -31,34 +30,31 @@
   }
 
   a {
-    @include x-rem(width, 6);
-    @include x-rem(padding, 0.5);
-
     display: inline-block;
+    width: 6rem;
+    padding: 0.5rem;
     text-decoration: none;
   }
 
   img {
-    @include x-rem(width, 4);
-    @include x-rem(height, 4);
-    @include x-rem(margin, 0 auto 1);
-    @include x-border-radius(50%);
-
     display: block;
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
   }
 }
 
 .footer__authors__other {
-  @include x-rem(font-size, 0.75);
+  font-size: 0.75rem;
 }
 
 .footer__follow {
-  @include x-rem(margin, 3 0);
+  margin: 3rem 0;
 }
 
-
 .footer__navigation {
-  @include x-rem(padding, 1 2 2);
+  padding: 1rem 2rem 2rem 2rem;
   background: darken($highlight-dark, 5);
 
   > ul {
@@ -70,7 +66,7 @@
       display: inline;
 
       > a {
-        @include x-rem(margin, 0 1);
+        margin: 0 1rem;
       }
     }
   }
