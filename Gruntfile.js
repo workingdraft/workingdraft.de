@@ -67,7 +67,7 @@ module.exports = function (grunt) {
         options: {
           baseUrl: 'src/js/',
           mainConfigFile: 'src/js/config.js',
-          include: ['main'],
+          include: [''],
           out: 'dist/js/main-<%= pkg.version %>.min.js'
         }
       }

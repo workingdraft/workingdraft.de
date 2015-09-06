@@ -1,16 +1,16 @@
 @charset "UTF-8";
 /*!
- *	This project's description goes here
+ *	Working Draft Podcast Website Scss
  *
- *	@author		Some author's name
- *	@version	v0.0.0
+ *	@author		Hans Christian Reinl / Anselm Hannemann
+ *	@version	v0.1.0-pre
  *
  */
 /**
  * Our color palette
  */
-/*! sass-mixins - v0.9.0 - 2014-07-02 */
-                                       /**
+/*! sass-mixins - v0.11.0 - 2014-10-20 */
+                                        /**
 * @description
 * Generates keyframe animations
 *
@@ -605,7 +605,8 @@ body {
    ========================================================================== */
 /**
  * Correct `block` display not defined for any HTML5 element in IE 8/9.
- * Correct `block` display not defined for `details` or `summary` in IE 10/11 and Firefox.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
  * Correct `block` display not defined for `main` in IE 11.
  */
 article,
@@ -617,6 +618,7 @@ footer,
 header,
 hgroup,
 main,
+menu,
 nav,
 section,
 summary {
@@ -661,7 +663,7 @@ template {
  * Remove the gray background color from active links in IE 10.
  */
 a {
-  background: transparent;
+  background-color: transparent;
 }
 
 /**
@@ -1076,13 +1078,11 @@ th {
 
 h1,
 h2 {
-  font-size: 32px;
   font-size: 2rem;
   margin: 1.5em 0 1em;
 }
 
 h3 {
-  font-size: 24px;
   font-size: 1.5rem;
   margin: 1em 0 0.5em;
 }
@@ -1166,22 +1166,19 @@ a:hover {
 }
 
 .error-page {
-  padding: 0 32px;
-  padding: 0 2rem;
-  max-width: 700px;
+  max-width: 40rem;
   margin: 0 auto;
+  padding: 0 2rem;
 }
 
 /**
  * Page Header and Navigation
  */
 .header {
-  padding: 32px;
-  padding: 2rem;
-  max-width: 800px;
-  max-width: 50rem;
   position: relative;
+  max-width: 50rem;
   margin: 0 auto;
+  padding: 2rem;
   text-align: center;
 }
 
@@ -1190,9 +1187,7 @@ a:hover {
   text-decoration: none;
 }
 .header__logo > a:before {
-  width: 240px;
   width: 15rem;
-  height: 240px;
   height: 15rem;
   content: '';
   display: block;
@@ -1209,19 +1204,16 @@ a:hover {
   right: 0;
 }
 .navigation > ul {
-  margin: 4.8px 48px 0 0;
-  margin: 0.3rem 3rem 0 0;
   display: none;
+  margin: 0.3rem 3rem 0 0;
   list-style: none;
   padding: 0;
   text-align: right;
 }
 .navigation a {
-  padding: 12px 0 4px;
-  padding: 0.75rem 0 0.25rem;
-  margin-bottom: 8px;
-  margin-bottom: 0.5rem;
   display: inline-block;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem 0 0.25rem 0.25rem;
   text-decoration: none;
   border-bottom: 2px solid #fff;
 }
@@ -1233,11 +1225,10 @@ a:hover {
 }
 
 .navigation__toggle {
-  padding: 16px 40px 16px 8px;
-  padding: 1rem 2.5rem 1rem 0.5rem;
   display: inline-block;
   float: right;
   position: relative;
+  padding: 1rem 2.5rem 1rem 0.5rem;
   background: none;
   border: 0;
   color: #8f098f;
@@ -1279,6 +1270,7 @@ a:hover {
  */
 .navigation--visible .navigation__toggle {
   text-indent: -99em;
+  overflow: hidden;
 }
 
 .navigation--visible .navigation__toggle span {
@@ -1302,12 +1294,9 @@ a:hover {
  * The Site's footer
  */
 .footer {
-  margin-top: 80px;
-  margin-top: 5rem;
-  padding: 32px 0 0;
-  padding: 2rem 0 0;
-  font-size: 14px;
   font-size: 0.875rem;
+  margin-top: 5rem;
+  padding: 2rem 0 0 0;
   background: #211421;
   color: #fff;
   text-align: center;
@@ -1329,38 +1318,29 @@ a:hover {
   vertical-align: top;
 }
 .footer__authors a {
-  width: 96px;
-  width: 6rem;
-  padding: 8px;
-  padding: 0.5rem;
   display: inline-block;
+  width: 6rem;
+  padding: 0.5rem;
   text-decoration: none;
 }
 .footer__authors img {
-  width: 64px;
-  width: 4rem;
-  height: 64px;
-  height: 4rem;
-  margin: 0 auto 16px;
-  margin: 0 auto 1rem;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
   display: block;
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
 }
 
 .footer__authors__other {
-  font-size: 12px;
   font-size: 0.75rem;
 }
 
 .footer__follow {
-  margin: 48px 0;
   margin: 3rem 0;
 }
 
 .footer__navigation {
-  padding: 16px 32px 32px;
-  padding: 1rem 2rem 2rem;
+  padding: 1rem 2rem 2rem 2rem;
   background: #110a11;
 }
 .footer__navigation > ul {
@@ -1372,7 +1352,6 @@ a:hover {
   display: inline;
 }
 .footer__navigation > ul > li > a {
-  margin: 0 16px;
   margin: 0 1rem;
 }
 
@@ -1381,7 +1360,7 @@ a:hover {
  */
 .wdplayer {
   position: relative;
-  width: 1100px;
+  width: 60rem;
   max-width: 100%;
   width: auto;
   margin: 0 auto;
@@ -1415,15 +1394,13 @@ a:hover {
  * Revisions
  */
 .revision {
-  padding: 0 32px;
-  padding: 0 2rem;
-  max-width: 700px;
+  max-width: 40rem;
   margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .revision-title {
-  margin: 48px 0 8px;
-  margin: 3rem 0 0.5rem;
+  margin: 3rem 0 0.5rem 0.5rem;
 }
 .revision-title > a {
   text-decoration: none;
@@ -1432,7 +1409,6 @@ a:hover {
 .revision-date,
 .revision-length,
 .revision-listen {
-  margin-right: 16px;
   margin-right: 1rem;
 }
 
@@ -1441,14 +1417,13 @@ a:hover {
 }
 
 .revision-content dt {
-  margin-top: 16px;
   margin-top: 1rem;
-  padding: 8px 0 4px;
-  padding: 0.5rem 0 0.25rem;
-  font-size: 20px;
+  padding: 0.5rem 0 0.25rem 0.25rem;
   font-size: 1.25rem;
 }
 
 .revision-content dd {
   margin-left: 0;
 }
+
+/*# sourceMappingURL=main.css.map */
